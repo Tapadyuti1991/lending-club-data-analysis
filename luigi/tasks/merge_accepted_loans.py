@@ -1,5 +1,7 @@
 import luigi
 import pymssql
+import os.path
+import pandas as pd
 class MergeDataDownloaded(luigi.Task):
 
     def run(self):
@@ -13,7 +15,7 @@ class MergeDataDownloaded(luigi.Task):
         #check inorder to avoid inclusion in merge to be tested to-do $$$$
         mergedFile = output_folder+"/CombinedDownloadData.csv" #check / \\  >> \
         if os.path.exists(mergedFile):   
-            os.remove(mergedFile)
+            os.remove(mergedFile) ## just os import required??? to-do $$$$
         
         for filename in os.listdir(folder):
             df_list.append(pd.read_csv(filename,skiprows=1,low_memory=False))
