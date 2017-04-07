@@ -1,0 +1,15 @@
+Lending club dataset has pre and post login option to download data. Post login, you can get the entire data. 
+
+Mechanical soup was used to automatically login and download data. Mechanical soup has the combined features of request and BeautifulSoup.
+
+
+
+
+
+
+
+
+
+References
+[1] [hickford/MechanicalSoup]: A Python library for automating interaction with websites (https://github.com/hickford/MechanicalSoup)
+[2] 
