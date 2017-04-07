@@ -29,3 +29,6 @@ Grade
 http://investorhelp.upstart.com/114489-what-do-the-loan-grades-mean
 
 SubGrade plus grade
+
+Reference Link:
+http://www.magnifymoney.com/blog/personal-loans/lendingclub-review-borrowers-insiders-reveal578301843
