@@ -16,6 +16,7 @@ class DownloadLendingClubDataSet(luigi.Task):
         print("Started : Creating directory for download data")
        #Create dir for download
         path = "Data/DOWNLOAD_LOAN_DATA"
+
         try:
             if not os.path.exists(path):
                 os.makedirs(path)
@@ -97,7 +98,6 @@ class DownloadLendingClubDataSet(luigi.Task):
 
     def output(self):
         #save file to Data directory
-
         return luigi.LocalTarget('Data/DOWNLOAD_LOAN_DATA/')
 
 if __name__ == '__main__':
