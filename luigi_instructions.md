@@ -3,7 +3,7 @@
 `python3 -m luigi --module download_accepted_loans  DownloadLendingClubDataSet  --local-scheduler`
 
 
-Pipeline
+Pipeline- Accepted and Declined loans
 The luigi pipline id divided in 4 tasks:
 1. DownloadLendingClubDataSet- Using mechanical soup login happens, then the values from dropdown are extracted to download files. The output is directed using luigi folder.
 2. MergeDataDownloaded -The downloaded data is now merged to create a dataframe. Due to memmory constraints on docker the downloaded files once merge are deleted. 
