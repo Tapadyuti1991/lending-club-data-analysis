@@ -9,7 +9,7 @@ refer luigi_instructions.readme for local luigi commands
 
 Summarization of lending dataset
 Data-Analysis.ipynb
-
+Summarization-Lending-Club-Data-Set.pdf
 
 
 
