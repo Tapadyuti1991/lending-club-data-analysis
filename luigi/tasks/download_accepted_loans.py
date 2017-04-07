@@ -13,6 +13,15 @@ class DownloadLendingClubDataSet(luigi.Task):
 
     def run(self):
         # end whtever needs to be run
+
+       #Create dir for download
+        path = "Data/DOWNLOAD_LOAN_DATA"
+        try:
+        if not os.path.exists(path):
+            os.makedirs(path)
+        except OSError as exception:
+            if exception.errno != errno.EEXIST:
+                raise
         
         EMAIL = input("Please enter your LendingClub login email: ")
         PASSWORD = input("Please enter your LendingClub password: ")
@@ -59,13 +68,15 @@ class DownloadLendingClubDataSet(luigi.Task):
         print("Successfully navigated to ",page3.soup.title.text," [",page3.url,"]")
 
         print("Started : Downloading download data") 
-
+        
+        #scrape
         download_file_string = page3.soup.select("div#loanStatsFileNamesJS")[0].text
 
         download_file_list = download_file_string.split("|")
 
         initial_path = "https://resources.lendingclub.com/"
 
+        #download
         for sec_filename in download_file_list:
             try:
                 if(len(sec_filename) >0):
