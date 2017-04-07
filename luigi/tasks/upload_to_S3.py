@@ -18,18 +18,25 @@ class UploadDataToS3(luigi.Task):
     # def input(self):
     #     return luigi.LocalTarget('/Data/Processed_Accepted.csv')
 
+#    def requires(self):
+#         return merge_accepted_loans.MergeDataDownloaded()
+
+
+    def input(self):
+        return luigi.LocalTarget('Data/CombinedDownloadData.csv')      
+
 
     def run(self):
-        aws_access_key_id ='#self.aws_secret_access_key'
-        aws_secret_access_key='#self.aws_secret_access_key'
+        aws_access_key_id =''
+        aws_secret_access_key=''
         conn=S3Connection(aws_access_key_id,aws_secret_access_key)
         # bucket_name="lendingclubdata-team1"
         bucket = conn.create_bucket("team1_lending_club")
         # bucket=conn.get_bucket(bucket_name)
 
         k=Key(bucket)
-        k.key = 'foobar' # to-do $$$$
-        k.set_contents_from_string('This is a test of S3') # to-do $$$$
+        k.key = 'CombinedDownloadData.csv' # to-do $$$$
+        k.set_contents_from_string(self.input().path) # to-do $$$$
         print('upload test')
 
 
