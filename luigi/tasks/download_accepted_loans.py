@@ -1,8 +1,8 @@
 import luigi
-import pymssql
+
 # $ pip install mechanicalsoup
 import mechanicalsoup
-import argparse
+
 import time
 
 from zipfile import ZipFile
@@ -17,15 +17,15 @@ class DownloadLendingClubDataSet(luigi.Task):
        #Create dir for download
         path = "Data/DOWNLOAD_LOAN_DATA"
         try:
-        if not os.path.exists(path):
-            os.makedirs(path)
+            if not os.path.exists(path):
+                os.makedirs(path)
         except OSError as exception:
             if exception.errno != errno.EEXIST:
                 raise
-        
-        EMAIL = input("Please enter your LendingClub login email: ")
-        PASSWORD = input("Please enter your LendingClub password: ")
-        
+
+        EMAIL = ######
+        PASSWORD = ####
+
         #constants
         LOGIN_URL = 'https://www.lendingclub.com/account/gotoLogin.action'
         POST_LOGIN_URL ='https://www.lendingclub.com/info/download-data.action'
@@ -67,8 +67,8 @@ class DownloadLendingClubDataSet(luigi.Task):
         assert page3.soup.select("ul.signed-in")
         print("Successfully navigated to ",page3.soup.title.text," [",page3.url,"]")
 
-        print("Started : Downloading download data") 
-        
+        print("Started : Downloading download data")
+
         #scrape
         download_file_string = page3.soup.select("div#loanStatsFileNamesJS")[0].text
 
@@ -89,10 +89,10 @@ class DownloadLendingClubDataSet(luigi.Task):
                     thefile.close()
             except Exception as e:
                 print("URL : "+sec_filename+" not found "+e)
-                
+
 
         time.sleep(1)
-        print("Finished : Downloading download data") 
+        print("Finished : Downloading download data")
 
     def output(self):
         #save file to Data directory
