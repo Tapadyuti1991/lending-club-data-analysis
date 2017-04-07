@@ -16,11 +16,35 @@ from datetime import datetime
 # In[2]:
 
 print("Start downloading data")
+
+
+
 df = pd.read_csv("Data/LoanStats3a_securev1.csv",skiprows=1)
+#df = pd.read_csv("Data/CombinedCSV_just_plain_combined.csv",skiprows=1)
+
 #if more than 50% values in an observation is NAN drop that observation
 half_count = len(df.columns) / 2
 df=df.dropna(axis='columns', how='all')
 df = df.dropna(thresh=half_count)
+
+
+# #df['earliest_cr_line']=pd.to_datetime(df.earliest_cr_line)
+
+# issue_d_todate = pd.to_datetime(df.issue_d)# (df['issue_d'].apply(lambda x: x.strftime('%Y-%m-%d')))
+# df.issue_d = pd.Series(df.issue_d).str.replace('-2014', '')
+# # We need sort_index() or else we won't get a sequential timedate order.
+# issue_d_todate.value_counts().sort_index().plot(kind='bar')
+# print(pd.to_datetime(df['issue_d_todate']).head(3))
+
+loc=df.columns.get_loc('earliest_cr_line')
+df.insert(loc+1,"earliest_cr_line_year", 0)
+loc2=df.columns.get_loc('last_credit_pull_d')
+df.insert(loc2+1,"last_credit_pull_d_year", 0)
+loc3=df.columns.get_loc('inq_last_6mths')
+df.insert(loc2+1,"grade_based_on_inq_last_6mths", 0)
+
+
+print(df['earliest_cr_line'].dtypes)
 print(df.shape)
 
 
@@ -108,14 +132,7 @@ df.ix[:5,15:21]
 #replace missing values for issue_d with Not available
 df.issue_d=df.issue_d.fillna(df['issue_d'].value_counts().idxmax())
 
-df.issue_d = pd.to_datetime(df.issue_d)
-#@@@ LOOK INTO THIS!!!
-# dttoday = datetime.now().strftime('%Y-%m-%d')
-# # There is a better way to do this :) 
-# df.issue_d = df.issue_d.apply(lambda x: (
-#         np.timedelta64((x - pd.Timestamp(dttoday)),'D').astype(int))/-365)
 
-# print(df.issue_d)
 
 #replace missing values for loan_status with Not available
 df.loan_status=df.loan_status.fillna("Not available")
@@ -181,7 +198,7 @@ df['fico_range'] = df.fico_range_low.astype('str') + '-' + df.fico_range_high.as
 print("Craeting the FICO range bucket")
 print("Calculating the new feature MeanFICO which is the average of low and high fico score and adding this column to the dataframe")
 df['meanfico'] = (df.fico_range_low + df.fico_range_high)/2
-df['meanfico'] =df['meanfico'].astype(int)
+df['meanfico'] = df['meanfico'].astype(int)
 df[['fico_range_low','fico_range_high','fico_range','meanfico']].head(3)
 
 
@@ -231,13 +248,16 @@ df.out_prncp=df.out_prncp.fillna(df['out_prncp'].value_counts().idxmax()).astype
 df.ix[:5,30:39]
 
 
-# In[19]:
+# In[18]:
 
 print("Clean and Analyse the slice of data column 39-47")
 df.ix[:5,39:47]
 
 
-# In[31]:
+# In[19]:
+
+#math.ceil(i*100)/100
+ceil_function= lambda x: math.ceil(x*100)/100
 
 #replace missing values for out_prncp_inv with max value
 df.out_prncp_inv=df.out_prncp_inv.fillna(df['out_prncp_inv'].value_counts().idxmax()).astype(int)
@@ -259,13 +279,13 @@ df['collection_recovery_fee']=df['collection_recovery_fee'].apply(ceil_function)
 df.ix[:5,39:47]
 
 
-# In[35]:
+# In[20]:
 
 print("Clean and Analyse the slice of data column 47-54")
 df.ix[:5,47:54]
 
 
-# In[45]:
+# In[21]:
 
 #last_pymnt_d/next_pymnt_d/last_credit_pull_d @@@@@@@ same as issue_d
 
@@ -287,18 +307,18 @@ df.collections_12_mths_ex_med=df.collections_12_mths_ex_med.fillna((df['collecti
 df[['last_fico_range_high','last_fico_range_low','last_fico_range','last_meanfico']].head(3)
 
 
-# In[46]:
+# In[22]:
 
 df.ix[:5,47:54]
 
 
-# In[57]:
+# In[23]:
 
 print("Clean and Analyse the slice of data column 54-62")
 df.ix[:5,54:61]
 
 
-# In[58]:
+# In[24]:
 
 df.policy_code=df.policy_code.fillna((df['policy_code'].value_counts().idxmax())).astype(int)
 df.application_type=df.application_type.fillna((df['application_type'].value_counts().idxmax()))
@@ -309,4 +329,47 @@ df.pub_rec_bankruptcies=df.pub_rec_bankruptcies.fillna((df['pub_rec_bankruptcies
 df.tax_liens=df.tax_liens.fillna((df['tax_liens'].value_counts().idxmax())).astype(int)
 
 df.ix[:5,54:61]
+
+
+# In[25]:
+
+df.loan_status.value_counts()
+print("Missing value handling completed!")
+
+
+# In[26]:
+
+print("Beginning Feature engineering")
+print("Derive a new column 'Credit Age'")
+#Age of credit history reflects the length of your experience with the credit system. This can be computed by deducting the [last_credit_pull_d_year - earliest_cr_line_year]                                 
+#we are creating the new column "Credit age"
+df['earliest_cr_line_year']=np.where(df['earliest_cr_line'].str[4:5]=='0', "20"+df['earliest_cr_line'].str[4:], 
+         (np.where(df['earliest_cr_line'].str[4:5]=='1', "20"+df['earliest_cr_line'].str[4:], "19"+df['earliest_cr_line'].str[4:])))
+
+df['last_credit_pull_d_year']=np.where(df['last_credit_pull_d'].str[4:5]=='0', "20"+df['last_credit_pull_d'].str[4:], 
+         (np.where(df['last_credit_pull_d'].str[4:5]=='1', "20"+df['last_credit_pull_d'].str[4:], "19"+df['last_credit_pull_d'].str[4:])))
+      
+    
+df['earliest_cr_line_year']=df['earliest_cr_line_year'].astype(int)
+df['last_credit_pull_d_year']=df['last_credit_pull_d_year'].astype(int)
+
+df['credit_age']= df['last_credit_pull_d_year'] - df['earliest_cr_line_year']
+df[['earliest_cr_line','earliest_cr_line_year','last_credit_pull_d','last_credit_pull_d_year','credit_age']].head()
+
+
+
+# In[40]:
+
+#https://www.creditkarma.com/question/hard-inquiries-how-many-is-to-many
+#Credit Karma gives a grade to people based on their number of inquiries in last 6 months
+#0 inquiries as an A, 1-2 = B, 3-6 = C, 7-10 = D, and 11+ = F. 
+print("Derive a new column 'Grade_based_on_inq_last_6mths'")
+df.grade_based_on_inq_last_6mths=np.where(df['inq_last_6mths']==0,'A', 
+           np.where(df['inq_last_6mths'].between(1,2), 'B',
+           np.where(df['inq_last_6mths'].between(3,6), 'C',
+           np.where(df['inq_last_6mths'].between(7,10), 'D',
+           'E'
+         ))))
+                                          
+df[['inq_last_6mths','grade_based_on_inq_last_6mths']].head(3)
 
