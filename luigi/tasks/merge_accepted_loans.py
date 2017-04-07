@@ -5,8 +5,8 @@ import download_accepted_loans
 import time
 import datetime
 class MergeDataDownloaded(luigi.Task):
-    # def requires(self):
-    #     return download_accepted_loans.DownloadLendingClubDataSet()
+    def requires(self):
+        return download_accepted_loans.DownloadLendingClubDataSet()
 
     def input(self):
         return luigi.LocalTarget('Data/DOWNLOAD_LOAN_DATA/')

@@ -4,6 +4,8 @@ docker build  -t leanding-club .
 
 docker run leanding-club  --module HandlingMissingValues  HandleMissingData  --local-scheduler
 
+refer luigi_instructions.readme for local luigi commands
+
 reference
 https://github.com/pysysops/docker-luigi-taskrunner
 
