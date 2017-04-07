@@ -44,7 +44,7 @@ USER ${user}
 RUN bash -c "pyvenv /luigi/.pyenv \
     && source /luigi/.pyenv/bin/activate \
     && pip install cython \
-    && pip install boto3 boto sqlalchemy luigi pymssql psycopg2 alembic numpy pandas sklearn scipy mechanicalsoup"
+    && pip install boto3 boto sqlalchemy luigi pymssql psycopg2 alembic numpy pandas sklearn scipy mechanicalsoup seaborn"
 
 ADD ./luigi/taskrunner.sh /luigi/
 

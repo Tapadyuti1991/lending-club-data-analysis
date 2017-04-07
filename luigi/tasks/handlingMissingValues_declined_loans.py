@@ -5,7 +5,7 @@ import pandas as pd
 import logging
 import luigi
 import os
-import merge_accepted_loans
+import merge_declined_loans
 import math
 import pandas as pd
 from sqlalchemy import create_engine
@@ -14,13 +14,13 @@ import seaborn as sns
 import math
 from datetime import datetime
 
-class HandleMissingData(luigi.Task):
+class HandleDeclinedMissingData(luigi.Task):
         def requires(self):
-            return merge_accepted_loans.MergeDataDownloaded()
+            return merge_declined_loans.MergeDeclinedDataDownloaded()
 
 
         def input(self):
-            return luigi.LocalTarget('Data/CombinedDeclineData.gzip')
+            return luigi.LocalTarget('Data/CombinedDeclinedDownloadData.gzip')
 
         def run(self):
                 
@@ -108,7 +108,7 @@ class HandleMissingData(luigi.Task):
         def output(self):
 
 
-            return luigi.LocalTarget("/Data/Processed_Decline.gzip")
+            return luigi.LocalTarget("/Data/Processed_Declined.gzip")
 
 # if __name__ == '__main__':
 #     luigi.run()
