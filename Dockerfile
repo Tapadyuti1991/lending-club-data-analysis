@@ -1,17 +1,3 @@
-#FROM khozzy/selenium-python-chrome
-
-#WORKDIR /src
-
-#COPY . /
-
-#RUN pip install bs4 pandas  
-
-
-#CMD ["python", "/src/Autologin.py"]
-
-
-
-
 
 FROM python:latest
 
@@ -36,7 +22,7 @@ VOLUME /etc/luigi
 RUN mkdir -p /luigi/tasks
 RUN mkdir -p /luigi/work
 RUN mkdir -p /luigi/outputs
-ADD ./Data /Data
+#ADD ./Data /Data
 ADD ./luigi/tasks/ /luigi/tasks
 
 RUN chown -R ${user}:${group} /luigi
@@ -57,7 +43,7 @@ USER ${user}
 RUN bash -c "pyvenv /luigi/.pyenv \
     && source /luigi/.pyenv/bin/activate \
     && pip install cython \
-    && pip install sqlalchemy luigi pymssql psycopg2 alembic numpy pandas sklearn scipy"
+    && pip install sqlalchemy luigi pymssql psycopg2 alembic numpy pandas sklearn scipy mechanicalsoup"
 
 ADD ./luigi/taskrunner.sh /luigi/
 
