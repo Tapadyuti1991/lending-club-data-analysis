@@ -23,8 +23,8 @@ class DownloadLendingClubDataSet(luigi.Task):
             if exception.errno != errno.EEXIST:
                 raise
 
-        EMAIL = ######
-        PASSWORD = ####
+        EMAIL = "bhanushali.n@husky.neu.edu"
+        PASSWORD = "nehal123"
 
         #constants
         LOGIN_URL = 'https://www.lendingclub.com/account/gotoLogin.action'
@@ -96,7 +96,7 @@ class DownloadLendingClubDataSet(luigi.Task):
 
     def output(self):
         #save file to Data directory
-        return luigi.LocalTarget('/Data/DOWNLOAD_LOAN_DATA')
+        return luigi.LocalTarget('Data/DOWNLOAD_LOAN_DATA/')
 
 # if __name__ == '__main__':
 #     luigi.run(['HelloWorldTask', '--workers', '1', '--local-scheduler'])

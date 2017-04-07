@@ -3,8 +3,8 @@ import os.path
 import pandas as pd
 import download_accepted_loans
 class MergeDataDownloaded(luigi.Task):
-    # def requires(self):
-    #     return download_accepted_loans.DownloadLendingClubDataSet()
+    def requires(self):
+        return download_accepted_loans.DownloadLendingClubDataSet()
 
     def input(self):
         return luigi.LocalTarget('Data/DOWNLOAD_LOAN_DATA')
