@@ -6,14 +6,20 @@ docker run leanding-club  --module HandlingMissingValues  HandleMissingData  --l
 
 refer luigi_instructions.readme for local luigi commands
 
-reference
+
+Summarization of lending dataset
+Data-Analysis.ipynb
+
+
+
+
+Reference for luigi 
 https://github.com/pysysops/docker-luigi-taskrunner
 
 
-https://github.com/ActiveState/dockron
-https://getcarina.com/docs/tutorials/schedule-tasks-cron/
 
 
+Dervied Columns Links
 revolving utilization
 
 http://blog.credit.com/2013/04/what-is-revolving-utilization-65530/
