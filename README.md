@@ -2,7 +2,7 @@
 
 docker build  -t leanding-club .
 
-docker run leanding-club  --module HandlingMissingValues  HandleMissingData  --local-scheduler
+docker run leanding-club  --module HandlingMissingValues  HandleMissingData  --local-scheduler --aws_access_key_id xxxx --aws_secret_access_key xxxx
 
 refer luigi_instructions.readme for local luigi commands
 
