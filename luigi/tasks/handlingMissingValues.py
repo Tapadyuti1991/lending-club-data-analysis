@@ -345,7 +345,7 @@ class HandleMissingData(luigi.Task):
 
 
             df['earliest_cr_line_year']=df['earliest_cr_line_year'].astype(int)
-            df['last_credit_pull_d_year']=df['last_credit_pull_d_year'].astype(int)
+            df['last_credit_pull_d_year']=df['last_credit_pull_d_year'].astype(float)
 
             df['credit_age']= df['last_credit_pull_d_year'] - df['earliest_cr_line_year']
             df[['earliest_cr_line','earliest_cr_line_year','last_credit_pull_d','last_credit_pull_d_year','credit_age']].head()
