@@ -8,36 +8,36 @@ from boto.s3.key import Key
 from boto.s3.connection import S3Connection
 class UploadDataToS3(luigi.Task):
     config = luigi.configuration.get_config()
-    #aws_access_key_id = luigi.Parameter(config_path=dict(section='s3', name='aws_access_key_id'))
-    # to-do $$$$
-    #aws_secret_access_key = luigi.Parameter(config_path=dict(section='s3', name='aws_secret_access_key'))
+    aws_access_key_id = luigi.Parameter()
 
-    # def requires(self):
-    #     return handlingMissingValues.HandleMissingData()
+    aws_secret_access_key = luigi.Parameter()
 
-    # def input(self):
-    #     return luigi.LocalTarget('/Data/Processed_Accepted.csv')
+    def requires(self):
+        return handlingMissingValues.HandleMissingData()
 
-#    def requires(self):
-#         return merge_accepted_loans.MergeDataDownloaded()
+    def input(self):
+        return luigi.LocalTarget('Data/Processed_Accepted.gzip')
+
+   def requires(self):
+        return merge_accepted_loans.MergeDataDownloaded()
 
 
     def input(self):
-        return luigi.LocalTarget('Data/CombinedDownloadData.csv')      
+        return luigi.LocalTarget('Data/Processed_Accepted.gzip')
 
 
     def run(self):
         aws_access_key_id =''
         aws_secret_access_key=''
+        conn=S3Connection(self.aws_access_key_id,self.aws_secret_access_key)
         conn=S3Connection(aws_access_key_id,aws_secret_access_key)
-        # bucket_name="lendingclubdata-team1"
+
         bucket = conn.create_bucket("team1_lending_club")
-        # bucket=conn.get_bucket(bucket_name)
 
         k=Key(bucket)
-        k.key = 'CombinedDownloadData.csv' # to-do $$$$
+        k.key = 'Processed_Accepted.gzip' # to-do $$$$
         k.set_contents_from_string(self.input().path) # to-do $$$$
-        print('upload test')
+        print('uploading to S3')
 
 
 if __name__ == "__main__":
