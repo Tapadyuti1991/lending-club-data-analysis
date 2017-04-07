@@ -8,7 +8,7 @@ import urllib
 from tempfile import mktemp
 import os
 
-class DownloadLendingClubDataSet(luigi.Task):
+class DownloadDeclinedLendingClubDataSet(luigi.Task):
 
     def run(self):
         # end whtever needs to be run
@@ -17,8 +17,8 @@ class DownloadLendingClubDataSet(luigi.Task):
         path = "Data/DECLINED_LOAN_DATA"
 
         try:
-        if not os.path.exists(path):
-            os.makedirs(path)
+            if not os.path.exists(path):
+                os.makedirs(path)
         except OSError as exception:
             if exception.errno != errno.EEXIST:
                 raise
