@@ -2,6 +2,7 @@ import luigi
 import os.path
 import pandas as pd
 import download_accepted_loans
+from os import listdir, rmdir, remove
 import time
 import datetime
 class MergeDataDownloaded(luigi.Task):
@@ -9,7 +10,7 @@ class MergeDataDownloaded(luigi.Task):
         return download_accepted_loans.DownloadLendingClubDataSet()
 
     def input(self):
-        return luigi.LocalTarget('Data/DOWNLOAD_LOAN_DATA/')
+        return luigi.LocalTarget('Data/DOWNLOAD_LOAN_DATA')
 
 
     def run(self):
@@ -24,15 +25,28 @@ class MergeDataDownloaded(luigi.Task):
         if os.path.exists(mergedFile):
             os.remove(mergedFile) ## just os import required??? to-do $$$$
 
+
+
+
+
         for filename in os.listdir(folder):
-            df = pd.read_csv(folder + "/"+ filename,skiprows=1,low_memory=False, encoding="utf8")
+            
+
+            df=pd.read_csv(folder + "/"+ filename,skiprows=1,low_memory=False, encoding="utf8")
             ts = time.time()
             date_time = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
             df.insert(1, "download_timestamp", date_time)
+            half_count = len(df.columns) / 2
+            df=df.dropna(axis='columns', how='all')
+            df = df.dropna(thresh=half_count)
             df_list.append(df)
 
+
+
+        for i in listdir(self.input().path):
+            os.remove(folder + "/"+i)
+        rmdir(self.input().path)
         combined_csv = pd.concat(df_list)
-        # print("DATAFRAME 1 HEAD :: "+df_list[0].head())
         combined_csv.to_csv(mergedFile, index=False ) #check / \\ \
 
         print("Finished : Merging download data files to CombinedDownloadData.csv ")
@@ -45,4 +59,3 @@ class MergeDataDownloaded(luigi.Task):
 
 if __name__ == '__main__':
     luigi.run()
-
