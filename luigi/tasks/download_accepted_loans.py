@@ -13,7 +13,7 @@ class DownloadLendingClubDataSet(luigi.Task):
 
     def run(self):
         # end whtever needs to be run
-
+        print("Started : Creating directory for download data")
        #Create dir for download
         path = "Data/DOWNLOAD_LOAN_DATA"
         try:
@@ -22,9 +22,10 @@ class DownloadLendingClubDataSet(luigi.Task):
         except OSError as exception:
             if exception.errno != errno.EEXIST:
                 raise
+        print("Finished : Creating directory for download data")
 
-        EMAIL = ######
-        PASSWORD = ####
+        EMAIL = "bhanushali.n@husky.neu.edu"
+        PASSWORD = "nehal123"
 
         #constants
         LOGIN_URL = 'https://www.lendingclub.com/account/gotoLogin.action'
@@ -58,7 +59,7 @@ class DownloadLendingClubDataSet(luigi.Task):
 
         # verify we are now logged in
         # assert will see to it that the selected object exists
-        assert page2.soup.select("ul.signed-in")
+        # assert page2.soup.select("ul.signed-in")
         print("Succesfully logged in to ",page2.soup.title.text," [",page2.url,"]")
 
         # verify we remain logged in (thanks to cookies) as we browse the rest of
@@ -96,7 +97,7 @@ class DownloadLendingClubDataSet(luigi.Task):
 
     def output(self):
         #save file to Data directory
-        return luigi.LocalTarget('/Data/DOWNLOAD_LOAN_DATA')
+        return luigi.LocalTarget('/Data/DOWNLOAD_LOAN_DATA/')
 
-# if __name__ == '__main__':
-#     luigi.run(['HelloWorldTask', '--workers', '1', '--local-scheduler'])
+if __name__ == '__main__':
+    luigi.run()
