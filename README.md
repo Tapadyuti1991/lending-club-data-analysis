@@ -40,3 +40,4 @@ SubGrade plus grade
 
 Reference Link:
 http://www.magnifymoney.com/blog/personal-loans/lendingclub-review-borrowers-insiders-reveal578301843
+https://www.credco.com/assets/pdfs/datasheets/FICO-booklet.pdf
