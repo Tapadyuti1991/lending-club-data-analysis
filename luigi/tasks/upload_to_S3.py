@@ -7,7 +7,8 @@ from luigi.s3 import S3Target, S3Client
 from boto.s3.key import Key
 from boto.s3.connection import S3Connection
 class UploadDataToS3(luigi.Task):
-    config = luigi.configuration.get_config()
+
+
     aws_access_key_id = luigi.Parameter()
 
     aws_secret_access_key = luigi.Parameter()
@@ -18,19 +19,13 @@ class UploadDataToS3(luigi.Task):
     def input(self):
         return luigi.LocalTarget('Data/Processed_Accepted.gzip')
 
-   def requires(self):
-        return merge_accepted_loans.MergeDataDownloaded()
 
-
-    def input(self):
-        return luigi.LocalTarget('Data/Processed_Accepted.gzip')
 
 
     def run(self):
-        aws_access_key_id =''
-        aws_secret_access_key=''
+
         conn=S3Connection(self.aws_access_key_id,self.aws_secret_access_key)
-        conn=S3Connection(aws_access_key_id,aws_secret_access_key)
+        
 
         bucket = conn.create_bucket("team1_lending_club")
 
