@@ -16,7 +16,7 @@ class HandleMissingData(luigi.Task):
 
 
         def input(self):
-            return luigi.LocalTarget('/Data/CombinedDownloadData.csv')
+            return luigi.LocalTarget('Data/CombinedDownloadData.csv')
 
         def run(self):
 
