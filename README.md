@@ -36,3 +36,7 @@ Lending_Club_Analysis_Report1.docx
 [5] [lendingclub-review-borrowers-insiders-reveal](http://www.magnifymoney.com/blog/personal-loans/lendingclub-review-borrowers-insiders-reveal578301843)
 
 [6] [FICO-booklet](https://www.credco.com/assets/pdfs/datasheets/FICO-booklet.pdf)
+
+
+Report link
+https://docs.google.com/document/d/1r_7PSswHTA7wRps6-sxUyaBHfU-C7mFRFr0A0iEtYc4/edit?ts=58e85a58
