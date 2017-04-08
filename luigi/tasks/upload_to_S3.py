@@ -17,7 +17,7 @@ class UploadDataToS3(luigi.Task):
         return handlingMissingValues.HandleMissingData()
 
     def input(self):
-        return luigi.LocalTarget('Data/Processed_Accepted.gzip')
+        return luigi.LocalTarget('Data/Processed_Accepted.csv')
 
 
 
@@ -30,7 +30,7 @@ class UploadDataToS3(luigi.Task):
         bucket = conn.create_bucket("team1_lending_club")
 
         k=Key(bucket)
-        k.key = 'Processed_Accepted.gzip' # to-do $$$$
+        k.key = 'Processed_Accepted.csv' # to-do $$$$
         k.set_contents_from_string(self.input().path) # to-do $$$$
         print('uploading to S3')
 
