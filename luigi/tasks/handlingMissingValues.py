@@ -16,7 +16,7 @@ class HandleMissingData(luigi.Task):
 
 
         def input(self):
-            return luigi.LocalTarget('Data/CombinedDownloadData.gzip')
+            return luigi.LocalTarget('Data/CombinedDownloadData.csv')
 
         def run(self):
 
@@ -371,7 +371,7 @@ class HandleMissingData(luigi.Task):
 
 
 
-            df.to_csv("Data/Processed_Accepted.gzip",index=False,compression="gzip")
+            df.to_csv("Data/Processed_Accepted.csv",index=False)
 
 
 
@@ -379,7 +379,7 @@ class HandleMissingData(luigi.Task):
         def output(self):
 
 
-            return luigi.LocalTarget("/Data/Processed_Accepted.gzip")
+            return luigi.LocalTarget("/Data/Processed_Accepted.csv")
 
 # if __name__ == '__main__':
 #     luigi.run()
