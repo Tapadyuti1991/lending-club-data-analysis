@@ -371,7 +371,7 @@ class HandleMissingData(luigi.Task):
 
 
 
-            df.to_csv("/Data/Processed_Accepted.csv",index=False)
+            df.to_csv("Data/Processed_Accepted.csv",index=False)
 
 
 
