@@ -35,6 +35,6 @@ class UploadDataToS3(luigi.Task):
         print('uploading to S3')
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    luigi.run()
+#     luigi.run()
