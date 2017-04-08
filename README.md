@@ -38,6 +38,9 @@ http://investorhelp.upstart.com/114489-what-do-the-loan-grades-mean
 
 SubGrade plus grade
 
-Reference Link:
+# Power BI Dashboard Link:
+https://app.powerbi.com/view?r=eyJrIjoiNmMzZmY3ZTAtMTRiNy00NzAyLTgzZTgtM2NiNjMyZmQzZGVjIiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9
+
+# Reference Link:
 http://www.magnifymoney.com/blog/personal-loans/lendingclub-review-borrowers-insiders-reveal578301843
 https://www.credco.com/assets/pdfs/datasheets/FICO-booklet.pdf
