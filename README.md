@@ -20,6 +20,9 @@ Data-Analysis.ipynb
 Summarization-Lending-Club-Data-Set.pdf
 Lending_Club_Analysis_Report1.docx
 
+## POWER BI DASHBOARD:
+[Power BI Dashboard Link](https://app.powerbi.com/view?r=eyJrIjoiNmMzZmY3ZTAtMTRiNy00NzAyLTgzZTgtM2NiNjMyZmQzZGVjIiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9)
+
 ## References:
 
 [1] [hickford/MechanicalSoup : A Python library for automating interaction with websites](https://github.com/hickford/MechanicalSoup) 
