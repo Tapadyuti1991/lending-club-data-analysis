@@ -9,6 +9,10 @@ from tempfile import mktemp
 import os
 
 class DownloadDeclinedLendingClubDataSet(luigi.Task):
+    
+     EMAIL = luigi.Parameter()
+
+     PASSWORD = luigi.Parameter()
 
     def run(self):
         # end whtever needs to be run
@@ -24,8 +28,8 @@ class DownloadDeclinedLendingClubDataSet(luigi.Task):
                 raise
         print("Finished : Creating directory for download data")
 
-        EMAIL = "bhanushali.n@husky.neu.edu"
-        PASSWORD = "nehal123"
+        EMAIL = self.EMAIL
+        PASSWORD = self.PASSWORD
 
         #constants
         LOGIN_URL = 'https://www.lendingclub.com/account/gotoLogin.action'

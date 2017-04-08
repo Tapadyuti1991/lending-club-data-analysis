@@ -49,13 +49,13 @@ class MergeDataDownloaded(luigi.Task):
         combined_csv = pd.concat(df_list)
         combined_csv.to_csv(mergedFile, index=False ) #check / \\ \
 
-        print("Finished : Merging download data files to CombinedDownloadData.gzip ")
+#         print("Finished : Merging download data files to CombinedDownloadData.gzip ")
 
         print("COMBINED DATAFRAME HEAD :: ",combined_csv.head())
 
     def output(self):
         #save file to Data directory
-        return luigi.LocalTarget('Data/CombinedDownloadData.gzip') ## check to-do $$$
+        return luigi.LocalTarget('Data/CombinedDownloadData.csv') ## check to-do $$$
 
-if __name__ == '__main__':
-    luigi.run()
+# if __name__ == '__main__':
+#     luigi.run()

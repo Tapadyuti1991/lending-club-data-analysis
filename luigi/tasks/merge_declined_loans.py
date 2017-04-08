@@ -51,7 +51,7 @@ class MergeDeclinedDataDownloaded(luigi.Task):
 
     def output(self):
         #save file to Data directory
-        return luigi.LocalTarget('Data/CombinedDeclinedDownloadData.gzip') ## check to-do $$$
+        return luigi.LocalTarget('Data/CombinedDeclinedDownloadData.csv') ## check to-do $$$
 
 # if __name__ == '__main__':
 #     luigi.run(['HelloWorldTask', '--workers', '1', '--local-scheduler'])

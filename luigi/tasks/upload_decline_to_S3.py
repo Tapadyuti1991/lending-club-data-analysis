@@ -1,6 +1,6 @@
 import luigi
 
-import handlingMissingValues
+import handlingMissingValues_declined_loans
 from luigi import configuration, s3
 from luigi.s3 import S3Target, S3Client
 
@@ -14,10 +14,10 @@ class UploadDataToS3(luigi.Task):
     aws_secret_access_key = luigi.Parameter()
 
     def requires(self):
-        return handlingMissingValues.HandleMissingData()
+        return handlingMissingValues_declined_loans.HandleDeclinedMissingData()
 
     def input(self):
-        return luigi.LocalTarget('Data/Processed_Accepted.csv')
+        return luigi.LocalTarget('Data/Processed_Decline.csv')
 
 
 
@@ -35,6 +35,6 @@ class UploadDataToS3(luigi.Task):
         print('uploading to S3')
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
 
-#     luigi.run()
+    luigi.run()
