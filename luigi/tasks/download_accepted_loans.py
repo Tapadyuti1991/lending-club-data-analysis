@@ -100,5 +100,5 @@ class DownloadLendingClubDataSet(luigi.Task):
         #save file to Data directory
         return luigi.LocalTarget('Data/DOWNLOAD_LOAN_DATA/')
 
-if __name__ == '__main__':
-    luigi.run()
+# if __name__ == '__main__':
+#     luigi.run()
