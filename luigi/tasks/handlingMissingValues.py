@@ -379,7 +379,7 @@ class HandleMissingData(luigi.Task):
         def output(self):
 
 
-            return luigi.LocalTarget("/Data/Processed_Accepted.csv")
+            return luigi.LocalTarget("Data/Processed_Accepted.csv")
 
 # if __name__ == '__main__':
 #     luigi.run()
