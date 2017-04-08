@@ -55,7 +55,7 @@ class MergeDataDownloaded(luigi.Task):
 
     def output(self):
         #save file to Data directory
-        return luigi.LocalTarget('Data/CombinedDownloadData.zip') ## check to-do $$$
+        return luigi.LocalTarget('Data/CombinedDownloadData.csv') ## check to-do $$$
 
 # if __name__ == '__main__':
 #     luigi.run()
