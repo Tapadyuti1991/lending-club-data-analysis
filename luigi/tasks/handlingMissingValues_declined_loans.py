@@ -20,7 +20,7 @@ class HandleDeclinedMissingData(luigi.Task):
 
 
         def input(self):
-            return luigi.LocalTarget('Data/CombinedDeclinedDownloadData.gzip')
+            return luigi.LocalTarget('Data/CombinedDeclinedDownloadData.csv')
 
         def run(self):
                 
@@ -100,7 +100,7 @@ class HandleDeclinedMissingData(luigi.Task):
 
                 print("Cleaning and missing value handling completed")
                 df.ix[:3,:9]
-                df.to_csv("Data/Processed_Decline.gzip",index=False,compression="gzip")
+                df.to_csv("Data/Processed_Decline.csv",index=False)
 
                 
 
@@ -108,7 +108,7 @@ class HandleDeclinedMissingData(luigi.Task):
         def output(self):
 
 
-            return luigi.LocalTarget("/Data/Processed_Declined.gzip")
+            return luigi.LocalTarget("/Data/Processed_Declined.csv")
 
 # if __name__ == '__main__':
 #     luigi.run()
