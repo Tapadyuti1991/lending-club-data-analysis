@@ -38,8 +38,8 @@ class DownloadLendingClubDataSet(luigi.Task):
         #constants
         LOGIN_URL = 'https://www.lendingclub.com/account/gotoLogin.action'
         POST_LOGIN_URL ='https://www.lendingclub.com/info/download-data.action'
-        cwd = os.getcwd()
-        destDir = os.path.join(cwd,"Data/DOWNLOAD_LOAN_DATA")
+        #cwd = os.getcwd()
+        destDir =self.output().path
 
         browser = mechanicalsoup.Browser() #Browser
 
