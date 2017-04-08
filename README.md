@@ -28,12 +28,8 @@ Lending_Club_Analysis_Report1.docx
 
 [3] [Dervied Columns Links revolving utilization](http://blog.credit.com/2013/04/what-is-revolving-utilization-65530/)
 
-[4] [Credit Age]()
+[4] [Power BI Dashboard Link](https://app.powerbi.com/viewr=eyJrIjoiNmMzZmY3ZTAtMTRiNy00NzAyLTgzZTgtM2NiNjMyZmQzZGVjIiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9)
 
-[5] [Declined loans, Risk Score, How to get estimate credit score] ()
+[5] [lendingclub-review-borrowers-insiders-reveal](http://www.magnifymoney.com/blog/personal-loans/lendingclub-review-borrowers-insiders-reveal578301843)
 
-[6] [Power BI Dashboard Link](https://app.powerbi.com/viewr=eyJrIjoiNmMzZmY3ZTAtMTRiNy00NzAyLTgzZTgtM2NiNjMyZmQzZGVjIiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9)
-
-[7] [lendingclub-review-borrowers-insiders-reveal](http://www.magnifymoney.com/blog/personal-loans/lendingclub-review-borrowers-insiders-reveal578301843)
-
-[8] [FICO-booklet](https://www.credco.com/assets/pdfs/datasheets/FICO-booklet.pdf)
+[6] [FICO-booklet](https://www.credco.com/assets/pdfs/datasheets/FICO-booklet.pdf)
