@@ -25,7 +25,7 @@ Summarization-Lending-Club-Data-Set.pdf
 REPORT_LENDING_CLUB_DATA_ANALYSIS.docx
 
 ## POWER BI DASHBOARD:
-[Power BI Dashboard Link] (https://app.powerbi.com/view?r=eyJrIjoiY2ZjOGYyYTMtZDI1MS00ZThlLTlhN2YtZGMwYWU5YjUzNjk0IiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9)
+[Power BI Dashboard Link](https://app.powerbi.com/view?r=eyJrIjoiY2ZjOGYyYTMtZDI1MS00ZThlLTlhN2YtZGMwYWU5YjUzNjk0IiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9)
 ## References:
 
 [1] [hickford/MechanicalSoup : A Python library for automating interaction with websites](https://github.com/hickford/MechanicalSoup) 
