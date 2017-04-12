@@ -335,22 +335,20 @@ class HandleMissingData(luigi.Task):
 
             print("Beginning Feature engineering")
             print("Derive a new column 'Credit Age'")
-            #Age of credit history reflects the length of your experience with the credit system. This can be computed by deducting the [last_credit_pull_d_year - earliest_cr_line_year]
+            #Age of credit history reflects the length of your experience with the credit system. This can be computed by deducting the [last_credit_pull_d_year - earliest_cr_line_year]                                 
             #we are creating the new column "Credit age"
-            df['earliest_cr_line_year']=np.where(df['earliest_cr_line'].str[4:5]=='0', "20"+df['earliest_cr_line'].str[4:],
-                     (np.where(df['earliest_cr_line'].str[4:5]=='1', "20"+df['earliest_cr_line'].str[4:], "19"+df['earliest_cr_line'].str[4:])))
+            df=df[pd.notnull(df['last_credit_pull_d'])]
+            df=df[pd.notnull(df['earliest_cr_line'])]
 
-            df['last_credit_pull_d_year']=np.where(df['last_credit_pull_d'].str[4:5]=='0', "20"+df['last_credit_pull_d'].str[4:],
-                     (np.where(df['last_credit_pull_d'].str[4:5]=='1', "20"+df['last_credit_pull_d'].str[4:], "19"+df['last_credit_pull_d'].str[4:])))
-
-
+            df['earliest_cr_line_year']=pd.Series(df['earliest_cr_line'].str[4:])
+            df['last_credit_pull_d_year']=pd.Series(df['last_credit_pull_d'].str[4:])
             df['earliest_cr_line_year']=df['earliest_cr_line_year'].astype(int)
-            df=df[pd.notnull(df['last_credit_pull_d_year'])]
             df['last_credit_pull_d_year']=df['last_credit_pull_d_year'].astype(int)
 
-            df['credit_age']= df['last_credit_pull_d_year'] - df['earliest_cr_line_year']
-            df[['earliest_cr_line','earliest_cr_line_year','last_credit_pull_d','last_credit_pull_d_year','credit_age']].head()
 
+            df['credit_age']= df['last_credit_pull_d_year'] - df['earliest_cr_line_year']
+
+            df[['earliest_cr_line','earliest_cr_line_year','last_credit_pull_d','last_credit_pull_d_year','credit_age']].head()
 
 
             # In[40]:
