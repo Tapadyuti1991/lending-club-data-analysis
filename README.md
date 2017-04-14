@@ -24,8 +24,10 @@ Summarization-Lending-Club-Data-Set.pdf
 
 REPORT_LENDING_CLUB_DATA_ANALYSIS.docx
 
+[Report link (google_sheet)](https://docs.google.com/document/d/1r_7PSswHTA7wRps6-sxUyaBHfU-C7mFRFr0A0iEtYc4/edit?ts=58e85a58)
+
 ## POWER BI DASHBOARD:
-[Power BI Dashboard Link] (https://app.powerbi.com/view?r=eyJrIjoiY2ZjOGYyYTMtZDI1MS00ZThlLTlhN2YtZGMwYWU5YjUzNjk0IiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9)
+[Power BI Dashboard Link](https://app.powerbi.com/view?r=eyJrIjoiY2ZjOGYyYTMtZDI1MS00ZThlLTlhN2YtZGMwYWU5YjUzNjk0IiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9)
 ## References:
 
 [1] [hickford/MechanicalSoup : A Python library for automating interaction with websites](https://github.com/hickford/MechanicalSoup) 
@@ -41,5 +43,4 @@ REPORT_LENDING_CLUB_DATA_ANALYSIS.docx
 [6] [FICO-booklet](https://www.credco.com/assets/pdfs/datasheets/FICO-booklet.pdf)
 
 
-Report link
-https://docs.google.com/document/d/1r_7PSswHTA7wRps6-sxUyaBHfU-C7mFRFr0A0iEtYc4/edit?ts=58e85a58
+
