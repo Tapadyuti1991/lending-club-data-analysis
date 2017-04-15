@@ -16,15 +16,31 @@ docker run -ti lending-club-analysis --module upload_to_S3 UploadDataToS3 --work
 ## Notebooks to look at :
 All py files inside code/luigi/tasks/
 
+#### Regression
+python/Regression_Feature_Selection_Full_Data.ipynb
+python/Regression_K-means.ipynb
+python/Regression_Manual_Clustering.ipynb
+
+#### Classification
+python/Classification.ipynb
+
+#### Clustering
+work/Clustering_consolidated.ipynb
+
 Summarization of lending dataset
 
 Data-Analysis.ipynb
 
+#### PART 1
 Summarization-Lending-Club-Data-Set.pdf
-
-REPORT_LENDING_CLUB_DATA_ANALYSIS.docx
-
+REPORT_1.docx
 [Report link (google_sheet)](https://docs.google.com/document/d/1r_7PSswHTA7wRps6-sxUyaBHfU-C7mFRFr0A0iEtYc4/edit?ts=58e85a58)
+
+#### PART 2
+REPORT_1.docx
+
+### FRONT END APPLICATION REPO LINK
+https://github.com/jainpranj/learning-flask
 
 ## POWER BI DASHBOARD:
 [Power BI Dashboard Link](https://app.powerbi.com/view?r=eyJrIjoiY2ZjOGYyYTMtZDI1MS00ZThlLTlhN2YtZGMwYWU5YjUzNjk0IiwidCI6IjZhYmZjNzNmLWRhNjQtNDEzNy05ZjlmLTE1ZmFhZTU2ZjY4NSIsImMiOjN9)
