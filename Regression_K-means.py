@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[2]:
+# In[1]:
 
 from io import StringIO
 import requests
@@ -10,9 +10,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.linear_model import LinearRegression
-
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import cross_val_score
 
 # @hidden_cell
 # This function accesses a file in your Object Storage. The definition contains your credentials.
@@ -58,7 +55,7 @@ cluster6_df = pd.read_csv(get_object_storage_file_with_credentials_b6d2dc4304df4
 # print(cluster6_df.head(3))
 
 
-# In[4]:
+# In[2]:
 
 from sklearn.preprocessing import LabelEncoder
 
@@ -74,17 +71,12 @@ def dummyEncode(df):
         return df
 
 
-# In[6]:
-
-
-
-
-# In[9]:
+# In[3]:
 
 cluster_df_list=[cluster1_df,cluster2_df,cluster3_df,cluster4_df,cluster5_df,cluster6_df]
 
 
-# In[10]:
+# In[4]:
 
 
 
@@ -92,7 +84,6 @@ for i in cluster_df_list:
     
     df_lr=i[['grade', 'total_pymnt_inv', 'revol_util', 'loan_status', 'fico_range_grade', 'total_rec_prncp', 'revol_bal', 'grade_based_on_inq_last_6mths', 'acc_open_past_24mths', 'installment', 'last_pymnt_amnt', 'funded_amnt_inv', 'total_acc', 'credit_age', 'issue_d', 'annual_inc', 'meanfico','int_rate']]
     df_lr.ix[:, df_lr.columns != 'int_rate']=dummyEncode(df_lr.ix[:, df_lr.columns != 'int_rate'])
-#     lr_list.append(df_small)
     X_train_lr_df, X_test_lr_df, Y_train_lr_df, Y_test_lr_df = train_test_split(df_lr.ix[:, df_lr.columns != 'int_rate'], df_lr.int_rate, test_size=0.2, random_state=0)
     print("Starting Linear Regression algorithm")
     linear_reg = LinearRegression()
@@ -100,14 +91,13 @@ for i in cluster_df_list:
 
     print ("Intercept is ",linear_reg.intercept_)
     print("Coefficient is ",linear_reg.coef_)
-    #print(lm.predict([18,3,0,4]))
+
     print("Training score is ",linear_reg.score(X_train_lr_df, Y_train_lr_df))
 
-    #np.mean((linear_reg.predict(X_test)-Y_test)**2)
     print("Testing score is ",linear_reg.score(X_test_lr_df, Y_test_lr_df))
 
 
-# In[13]:
+# In[5]:
 
 from sklearn.metrics import r2_score
 from sklearn.ensemble import RandomForestRegressor
@@ -126,7 +116,7 @@ for i in cluster_df_list:
     print("Accuracy of the model is ",r2_score(Y_test_ran_for,y_pred)) 
 
 
-# In[15]:
+# In[6]:
 
 from sklearn.neighbors import KNeighborsRegressor
 
@@ -147,7 +137,7 @@ for i in cluster_df_list:
          print("Accuracy of the model is ",r2_score(Y_test_knn,y_pred))
 
 
-# In[16]:
+# In[7]:
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPRegressor
